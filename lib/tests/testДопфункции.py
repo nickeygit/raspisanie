@@ -6,11 +6,11 @@ from lib.Допфункции import *
 
 class TestДополнительныхФункций(unittest.TestCase):
 
-    def testпериодВДниЧасыМинутыСекунды(self):
+    def testПериодВДниЧасыМинутыСекунды(self):
         отрезок = период(days=3, hours=29, minutes=145, seconds=8)
         self.assertEqual((4, 7, 25, 8), периодВДниЧасыМинутыСекунды(отрезок))
 
-    def testпериодВСтроку(self):
+    def testПериодВСтроку(self):
         отрезок = период(days=3, hours=29, minutes=125, seconds=8)
         self.assertEqual("4д:07ч:05м", периодВСтроку(отрезок))
 
@@ -20,7 +20,7 @@ class TestДополнительныхФункций(unittest.TestCase):
         отрезок = период(days=0, hours=9, minutes=35, seconds=38)
         self.assertEqual("09:35", периодВСтроку(отрезок))
 
-    def testпериодВСтрокуиСекунды(self):
+    def testПериодВСтрокуиСекунды(self):
         отрезок = период(0)
         self.assertEqual("--", периодВСтрокуиСекунды(отрезок))
 
@@ -32,6 +32,32 @@ class TestДополнительныхФункций(unittest.TestCase):
 
         отрезок = период(days=0, hours=9, minutes=25, seconds=8)
         self.assertEqual("09:25:08", периодВСтрокуиСекунды(отрезок))
+
+    def testПериодВЧасыЧиМинутыМ(self):
+        отрезок = период(0)
+        self.assertEqual("", периодВЧасыЧИМинутыМ(отрезок))
+        self.assertEqual("", периодВЧасыЧИМинутыМ(None))
+
+        отрезок = период(minutes=7)
+        self.assertEqual("7м", периодВЧасыЧИМинутыМ(отрезок))
+
+        отрезок = период(minutes=25)
+        self.assertEqual("25м", периодВЧасыЧИМинутыМ(отрезок))
+
+        отрезок = период(hours=5)
+        self.assertEqual("5ч", периодВЧасыЧИМинутыМ(отрезок))
+
+        отрезок = период(hours=15)
+        self.assertEqual("15ч", периодВЧасыЧИМинутыМ(отрезок))
+
+        отрезок = период(hours=4, minutes=25)
+        self.assertEqual("4ч 25м", периодВЧасыЧИМинутыМ(отрезок))
+
+        отрезок = период(days=4, hours=9, minutes=25)
+        self.assertEqual("9ч 25м", периодВЧасыЧИМинутыМ(отрезок))
+
+        отрезок = период(days=0, hours=11, minutes=25, seconds=8)
+        self.assertEqual("11ч 25м", периодВЧасыЧИМинутыМ(отрезок))
 
 class TestПериодическогоПроцесса(unittest.TestCase):
 
