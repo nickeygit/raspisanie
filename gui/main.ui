@@ -80,6 +80,11 @@
         <string>Минимум</string>
        </property>
       </column>
+      <column>
+       <property name="text">
+        <string> </string>
+       </property>
+      </column>
      </widget>
     </item>
     <item>

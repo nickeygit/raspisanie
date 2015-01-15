@@ -280,6 +280,7 @@ class ГлавноеОкно(MainWindow):
         элемент.setTextAlignment(self.СТОЛБИК_ВСЕГО_ЗАТРАЧЕНО, QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
         элемент.setTextAlignment(self.СТОЛБИК_СВОЁ_ЗАТРАЧЕНО, QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
         элемент.setTextAlignment(self.СТОЛБИК_МАКСИМУМА, QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
+        элемент.setTextAlignment(self.СТОЛБИК_МИНИМУМА, QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
 
     def задатьНазваниеЭлемента(self, элемент, название):
         элемент.setText(self.СТОЛБИК_ИМЕНИ, название)
