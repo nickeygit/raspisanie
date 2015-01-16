@@ -193,15 +193,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.обновитьВремяЭлемента(элемент)
             элемент = элемент.parent()
 
-    def рекурсивноОбновитьЗатраченноеВремяГруппы(self, элемент):
-        while элемент is not None:
-            self.обновитьЗатраченноеВремяГруппы(элемент.задача, элемент)
-            элемент = элемент.parent()
-
     def обновитьВремяЭлемента(self, элемент):
         задача = элемент.задача
         self.обновитьЗатраченноеВремяЗадачи(задача, элемент)
-        self.обновитьЗатраченноеВремяГруппы(задача, элемент)
         минимум = задача.минимальноеВремя()
         максимум = задача.максимальноеВремя()
         элемент.setText(self.СТОЛБИК_МИНИМУМА, периодВЧасыЧИМинутыМ(минимум))
@@ -217,9 +211,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def on_izmenitbZatrachennoeVremya_triggered(self, checked):
         self.изменитьЗатраченноеВремяЗадачи()
-
-    def on_addTask_triggered(self, checked):
-        self.добавитьНовыйЭлементЗадачи()
 
     @pyqtSlot()
     def on_udalitZadachuMenu_triggered(self):
